@@ -5,8 +5,9 @@
 }
 
 <h2>New Customer</h2>
-@using (Html.BeginForm("Create", "Customers"))
+@using (Html.BeginForm("Save", "Customers"))
 {
+    @Html.AntiForgeryToken()
   <div class="form-group">
     @Html.LabelFor(m => m.Customer.Name)
     @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
@@ -24,6 +25,7 @@
       @Html.CheckBoxFor(m => m.Customer.IsSubscribedToNewsletter) Subscribe to Newsletter?
     </label>
   </div>
+  @Html.HiddenFor(m=>m.Customer.Id)
   <button type="submit" class="btn btn-primary">Save</button>
 }
 
