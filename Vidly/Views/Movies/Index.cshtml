@@ -15,6 +15,8 @@ else
     <thead>
       <tr>
         <th>Movie</th>
+        <th>In Stock</th>
+        <th>Release Date</th>
         <th>Genre</th>
       </tr>
     </thead>
@@ -22,7 +24,9 @@ else
       @foreach (var movie in Model)
       {
         <tr>
-          <td>@Html.ActionLink(movie.Name, "Details", "Movies", new { id = movie.Id }, null)</td>
+          <td>@Html.ActionLink(movie.Name, "Edit", "Movies", new { id = movie.Id }, null)</td>
+          <td>@movie.NumberInStock</td>
+          <td>@movie.ReleaseDate.ToShortDateString()</td>
           <td>@movie.Genre.Name</td>
         </tr>
       }
