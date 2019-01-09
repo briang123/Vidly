@@ -56,15 +56,7 @@ namespace Vidly.Controllers
                 movieInDb.NumberInStock = movie.NumberInStock;
             }
 
-            try
-            {
-                _context.SaveChanges();
-            }
-            catch (Exception e)
-            {
-
-                Console.WriteLine(e);
-            }
+            _context.SaveChanges();
 
             return RedirectToAction("Index", "Movies");
         }
