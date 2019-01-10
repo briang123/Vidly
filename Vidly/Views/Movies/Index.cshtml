@@ -4,7 +4,7 @@
   Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Movies</h2>
-<p>@Html.ActionLink("New Movie", "New", "Movies", null, new { @class = "btn btn-primary" })</p>
+<p>@Html.ActionLink("New Movie", "New", "Movies", null, new {@class = "btn btn-primary"})</p>
 @if (!Model.Any())
 {
   <p>We don't have any movies to display yet.</p>
@@ -13,23 +13,23 @@ else
 {
   <table class="table table-bordered table-hover">
     <thead>
-      <tr>
-        <th>Movie</th>
-        <th>In Stock</th>
-        <th>Release Date</th>
-        <th>Genre</th>
-      </tr>
+    <tr>
+      <th>Movie</th>
+      <th>In Stock</th>
+      <th>Release Date</th>
+      <th>Genre</th>
+    </tr>
     </thead>
     <tbody>
-      @foreach (var movie in Model)
-      {
-        <tr>
-          <td>@Html.ActionLink(movie.Name, "Edit", "Movies", new { id = movie.Id }, null)</td>
-          <td>@movie.NumberInStock</td>
-          <td>@movie.ReleaseDate.ToShortDateString()</td>
-          <td>@movie.Genre.Name</td>
-        </tr>
-      }
+    @foreach (var movie in Model)
+    {
+      <tr>
+        <td>@Html.ActionLink(movie.Name, "Edit", "Movies", new {id = movie.Id}, null)</td>
+        <td>@movie.NumberInStock</td>
+        <td>@movie.ReleaseDate.ToShortDateString()</td>
+        <td>@movie.Genre.Name</td>
+      </tr>
+    }
     </tbody>
   </table>
 }
