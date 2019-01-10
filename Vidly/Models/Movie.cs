@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace Vidly.Models
 {
@@ -27,6 +24,5 @@ namespace Vidly.Models
 
         [Display(Name = "Number in Stock")]
         public byte NumberInStock { get; set; }
-
     }
 }
