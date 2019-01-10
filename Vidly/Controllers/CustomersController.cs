@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Web;
-using System.Web.Helpers;
 using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
@@ -12,7 +8,7 @@ namespace Vidly.Controllers
 {
     public class CustomersController : Controller
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public CustomersController()
         {
@@ -30,6 +26,7 @@ namespace Vidly.Controllers
             var membershipTypes = _context.MembershipTypes.ToList();
             var viewModel = new CustomerFormViewModel
             {
+                Customer = new Customer(),
                 MembershipTypes = membershipTypes
             };
 
@@ -41,6 +38,16 @@ namespace Vidly.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+
+                return View("CustomerForm", viewModel);
+            }
             if (customer.Id == 0)
             {
                 _context.Customers.Add(customer);
@@ -68,24 +75,24 @@ namespace Vidly.Controllers
         }
 
         // customer details view
-        public ActionResult Details(int Id)
+        public ActionResult Details(int id)
         {
-            Customer customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == Id);
+            var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
             if (customer == null)
             {
-                return HttpNotFound($"A customer with the ID of {Id} was not found.");
+                return HttpNotFound($"A customer with the ID of {id} was not found.");
             }
 
             return View(customer);
         }
 
         // edit customer
-        public ActionResult Edit(int Id)
+        public ActionResult Edit(int id)
         {
-            var customer = _context.Customers.SingleOrDefault(c => c.Id == Id);
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
             if (customer == null)
             {
-                return HttpNotFound($"A customer with the ID of {Id} was not found.");
+                return HttpNotFound($"A customer with the ID of {id} was not found.");
             }
 
             var viewModel = new CustomerFormViewModel
