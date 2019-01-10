@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Validation;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
 using Vidly.Models;
 using Vidly.ViewModels;
 
@@ -70,24 +66,24 @@ namespace Vidly.Controllers
         }
 
         // movie details view
-        public ActionResult Details(int Id)
+        public ActionResult Details(int id)
         {
-            Movie movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == Id);
+            Movie movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
             if (movie == null)
             {
-                return HttpNotFound($"A movie with an ID of {Id} was not found.");
+                return HttpNotFound($"A movie with an ID of {id} was not found.");
             }
 
             return View(movie);
         }
 
         // edit movie
-        public ActionResult Edit(int Id)
+        public ActionResult Edit(int id)
         {
-            var movie = _context.Movies.SingleOrDefault(m => m.Id == Id);
+            var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
             if (movie == null)
             {
-                return HttpNotFound($"A movie with the ID of {Id} was not found.");
+                return HttpNotFound($"A movie with the ID of {id} was not found.");
             }
 
             var viewModel = new MovieFormViewModel
