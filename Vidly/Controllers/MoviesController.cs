@@ -48,7 +48,7 @@ namespace Vidly.Controllers
         // movie details view
         public ActionResult Details(int id)
         {
-            Movie movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
+            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
             if (movie == null)
             {
                 return HttpNotFound($"A movie with an ID of {id} was not found.");
