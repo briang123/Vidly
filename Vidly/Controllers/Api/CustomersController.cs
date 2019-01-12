@@ -48,7 +48,7 @@ namespace Vidly.Controllers.Api
 
         // PUT /api/customers/1
         [HttpPut]
-        public void UpdateCustomer(int id, Customer customer)
+        public Customer UpdateCustomer(int id, Customer customer)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -64,11 +64,13 @@ namespace Vidly.Controllers.Api
             customerInDb.MembershipTypeId = customer.MembershipTypeId;
 
             Context.SaveChanges();
+
+            return customerInDb;
         }
 
         // DELETE /api/customers/1
         [HttpDelete]
-        public void DeleteCustomer(int id)
+        public Customer DeleteCustomer(int id)
         {
             var customerInDb = Context.Customers.SingleOrDefault(c => c.Id == id);
 
@@ -77,6 +79,8 @@ namespace Vidly.Controllers.Api
 
             Context.Customers.Remove(customerInDb);
             Context.SaveChanges();
+
+            return customerInDb;
         }
     }
 }
