@@ -23,7 +23,16 @@ namespace Vidly
         {
             //Mapper.CreateMap<Customer, CustomerDto>().ReverseMap(); //instead of 2 create maps model/dto
             Mapper.CreateMap<Customer, CustomerDto>();
-            Mapper.CreateMap<CustomerDto, Customer>();
+            //Mapper.CreateMap<CustomerDto, Customer>();
+            Mapper.CreateMap<Movie, MovieDto>();
+            //Mapper.CreateMap<MovieDto, Movie>();
+
+            //// Dto to Domain
+            //Mapper.CreateMap<CustomerDto, Customer>()
+            //    .ForMember(c => c.Id, opt => opt.Ignore());
+
+            //Mapper.CreateMap<MovieDto, Movie>()
+            //    .ForMember(c => c.Id, opt => opt.Ignore());
         }
     }
 }
