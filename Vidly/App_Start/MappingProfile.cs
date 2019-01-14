@@ -25,10 +25,10 @@ namespace Vidly
             Mapper.CreateMap<Customer, CustomerDto>();
             Mapper.CreateMap<MembershipType, MembershipTypeDto>();
             Mapper.CreateMap<Movie, MovieDto>();
-            //Mapper.CreateMap<CustomerDto, Customer>();
-            //Mapper.CreateMap<MovieDto, Movie>();
+            Mapper.CreateMap<CustomerDto, Customer>();
+            Mapper.CreateMap<MovieDto, Movie>();
 
-            //// Dto to Domain
+            // Dto to Domain
             //Mapper.CreateMap<CustomerDto, Customer>()
             //    .ForMember(c => c.Id, opt => opt.Ignore());
 
