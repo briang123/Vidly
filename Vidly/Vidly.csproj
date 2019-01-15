@@ -244,6 +244,10 @@
     <Compile Include="Migrations\201901081818492_Genres.Designer.cs">
       <DependentUpon>201901081818492_Genres.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901150037283_SeedUsers.cs" />
+    <Compile Include="Migrations\201901150037283_SeedUsers.Designer.cs">
+      <DependentUpon>201901150037283_SeedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -544,6 +548,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901081818492_Genres.resx">
       <DependentUpon>201901081818492_Genres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901150037283_SeedUsers.resx">
+      <DependentUpon>201901150037283_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
