@@ -22,6 +22,7 @@ namespace Vidly.Controllers
         }
 
         // create new movie form
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult New()
         {
             var genres = _context.Genres.ToList();
@@ -40,9 +41,7 @@ namespace Vidly.Controllers
         // default movie list
         public ViewResult Index()
         {
-            var movies = _context.Movies.Include(m => m.Genre).ToList();
-
-            return View(movies);
+            return View(User.IsInRole(RoleName.CanManageMovies) ? "List" : "ReadOnlyList");
         }
 
         // movie details view
