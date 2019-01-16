@@ -21,6 +21,7 @@ namespace Vidly.Controllers
         }
 
         // create new customer form
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
@@ -36,6 +37,7 @@ namespace Vidly.Controllers
         // save customer
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Save(Customer customer)
         {
             if (!ModelState.IsValid)
@@ -69,9 +71,7 @@ namespace Vidly.Controllers
         // default customer list
         public ViewResult Index()
         {
-            //var customers = _context.Customers.Include(c => c.MembershipType).ToList();
-            //return View(customers);
-            return View();
+            return View(User.IsInRole(RoleName.CanManageMovies) ? "List" : "ReadOnlyList");
         }
 
         // customer details view
@@ -87,6 +87,7 @@ namespace Vidly.Controllers
         }
 
         // edit customer
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Edit(int id)
         {
             var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
