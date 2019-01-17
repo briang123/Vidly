@@ -70,6 +70,7 @@
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
@@ -208,6 +209,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\Api\MoviesController.cs" />
+    <Compile Include="Dtos\NewRentalDto.cs" />
+    <Compile Include="Controllers\Api\NewRentalsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -272,7 +275,16 @@
     <Compile Include="Migrations\201901161639072_AddPhoneToApplicationUser.Designer.cs">
       <DependentUpon>201901161639072_AddPhoneToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901171641530_AddRental.cs" />
+    <Compile Include="Migrations\201901171641530_AddRental.Designer.cs">
+      <DependentUpon>201901171641530_AddRental.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901171711058_AddNumberAvailableToMovie.cs" />
+    <Compile Include="Migrations\201901171711058_AddNumberAvailableToMovie.Designer.cs">
+      <DependentUpon>201901171711058_AddNumberAvailableToMovie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="ViewModels\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -601,6 +613,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901161639072_AddPhoneToApplicationUser.resx">
       <DependentUpon>201901161639072_AddPhoneToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901171641530_AddRental.resx">
+      <DependentUpon>201901171641530_AddRental.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901171711058_AddNumberAvailableToMovie.resx">
+      <DependentUpon>201901171711058_AddNumberAvailableToMovie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
